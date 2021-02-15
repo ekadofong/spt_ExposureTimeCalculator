@@ -14,7 +14,7 @@ sys.path.append(HOME_DIR + "/datamodel/python")
 from pfs.datamodel.pfsConfig import PfsDesign, PfsConfig
 from pfs.datamodel.drp import PfsArm, PfsMerged, PfsObject
 from pfs.datamodel.masks import MaskHelper
-from pfs.datamodel.target import TargetData, TargetObservations
+#from pfs.datamodel.target import TargetData, TargetObservations
 from pfs.datamodel import utils
 from pfs.datamodel import FluxTable
 from pfs.datamodel.wavelengthArray import WavelengthArray
@@ -38,6 +38,7 @@ def makePfsDesign(tracts, patches, fiberIds, ras, decs, catIds, objIds, objectMa
     return PfsDesign(pfsDesignId=pfsDesignId, raBoresight=raBoresight, decBoresight=decBoresight,
                      fiberId=fiberIds, tract=tracts, patch=patches, ra=ras, dec=decs,
                      catId=catIds, objId=objIds, targetType=targetTypes,
+                     fiberStatus=[1,]*nFiber, # force to 1==good
                      fiberMag=fiberMags, filterNames=filterNames, pfiNominal=pfiNominals)
 
 
@@ -60,6 +61,7 @@ def makePfsConfig(pfsDesignId, visit0, tracts, patches, fiberIds, ras, decs, cat
                      fiberId=fiberIds, tract=tracts, patch=patches, ra=ras, dec=decs,
                      catId=catIds, objId=objIds, targetType=targetTypes,
                      fiberMag=fiberMags, filterNames=filterNames,
+                     fiberStatus=[1,]*nFiber, # force to 1==good
                      pfiCenter=pfiCenters, pfiNominal=pfiNominals)
 
 

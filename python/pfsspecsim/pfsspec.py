@@ -458,10 +458,12 @@ class Pfsspec(object):
         ''' Ascii '''
         if self.asciiTable != "None":
             write_ascii(pfsArmSet, arms, self.asciiTable, self.outdir)
-            # print("ASCII table %s was generated" % self.asciiTable)
+            print("ASCII table %s was generated" % self.asciiTable)
+            
+            return 0 # \\ XXX
         '''
             Now make the PfsObject from the PfsArmSet
-        '''
+            '''
         pfsObjects, pfsVisitHashes = dm_utils.makePfsObjects(pfsConfig=pfsConfig, visit0=self.visit, pfsArmSet=pfsArmSet,
                                                              minWavelength=350., maxWavelength=1260., dWavelength=0.08)
         for pfsObject, pfsVisitHash in zip(pfsObjects, pfsVisitHashes):
